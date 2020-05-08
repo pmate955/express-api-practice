@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Express Typescript Skeleton",
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Hello World",
+        "operationId": "helloWorld",
+        "responses": {
+          "200": {
+            "description": "Return with Hello World message"
+          }
+        }
+      }
+    },
+    "/pokemon": {
+      "get": {
+        "summary": "get pokemons",
+        "operationId": "helloWorld",
+        "responses": {
+          "200": {
+            "description": "Return pokemons"
+          }
+        }
+      }
+    },
+    "/pokemon/{name}": {
+      "get": {
+        "parameters": [{
+          "in": "path",
+          "name": "name",
+          "type": "string"
+        }],
+        "summary": "get pokemons",
+        "responses": {
+          "200": {
+            "description": "Return pokemons"
+          }
+        }
+      }
+    },
+    "/location": {
+      "get": {
+        "summary": "get pokemons",
+        "responses": {
+          "200": {
+            "description": "Return pokemons"
+          }
+        }
+      },
+      "post": {
+        "summary": "create location, if exists",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return OK"
+          }
+        }
+      }
+    },
+    "/location/{woeid}": {
+      "get": {
+        "parameters": [{
+          "in": "path",
+          "name": "woeid",
+          "type": "string"
+        }],
+        "summary": "get weather",
+        "operationId": "helloWorld",
+        "responses": {
+          "200": {
+            "description": "Return pokemons"
+          }
+        }
+      }
+    }
+  }
+}

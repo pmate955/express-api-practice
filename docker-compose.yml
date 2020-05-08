@@ -1,0 +1,42 @@
+version: "2"
+services:
+  api-test-db:
+    container_name: api-test-db
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: "database"
+      MYSQL_USER: "database"
+      MYSQL_PASSWORD: "toor"
+      MYSQL_ROOT_PASSWORD: "toor"
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    volumes:
+      - api-test-db-data:/var/lib/mysql
+    networks:
+      inner:
+        aliases:
+          - api-test-db
+  api-test:
+    container_name: api-test
+    build:
+      context: ./
+      dockerfile: Dockerfile.development
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-test-db
+    volumes:
+      - "./:/usr/src/app"
+      - "~/.ssh:/root/.ssh"
+    networks:
+      inner:
+        aliases:
+          - api-test
+networks:
+  inner: {}
+volumes:
+  api-test-db-data: {}
