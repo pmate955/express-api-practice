@@ -1,5 +1,4 @@
-# express-typescript-skeleton
-Simple skeleton for TypeScript based Express.js application
+# Express typescript app for use 2 free API
 
 Run:
 docker-compose up
